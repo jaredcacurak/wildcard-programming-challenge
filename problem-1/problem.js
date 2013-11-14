@@ -1,4 +1,4 @@
-var url = 'https://raw.github.com/jaredcacurak/wildcard-programming-challenge/master/problem-1/problem1input.txt?token=45584__eyJzY29wZSI6IlJhd0Jsb2I6amFyZWRjYWN1cmFrL3dpbGRjYXJkLXByb2dyYW1taW5nLWNoYWxsZW5nZS9tYXN0ZXIvcHJvYmxlbS0xL3Byb2JsZW0xaW5wdXQudHh0IiwiZXhwaXJlcyI6MTM4NTA2NjUyMH0%3D--2d1097f4f0ea866618b364462a6bc12418b6c779',
+var url = 'https://raw.github.com/jaredcacurak/wildcard-programming-challenge/master/problem-1/problem1input.txt',
     myRequest = new XMLHttpRequest();
 
 myRequest.open('GET', url, false);
