@@ -1,11 +1,4 @@
-var url = 'https://raw.github.com/jaredcacurak/wildcard-programming-challenge/master/problem-1/problem1input.txt',
-    myRequest = new XMLHttpRequest(),
-    countDistinctPositions;
-
-myRequest.open('GET', url, false);
-myRequest.send();
-
-countDistinctPositions = (function () {
+var countDistinctPositions = (function () {
     'use strict';
 
     /**
