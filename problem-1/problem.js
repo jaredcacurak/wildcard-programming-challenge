@@ -1,28 +1,29 @@
 var url = 'https://raw.github.com/jaredcacurak/wildcard-programming-challenge/master/problem-1/problem1input.txt',
-    myRequest = new XMLHttpRequest();
+    myRequest = new XMLHttpRequest(),
+    countDistinctPositions;
 
 myRequest.open('GET', url, false);
 myRequest.send();
 
-countDistinctPositions('*', 5, myRequest.responseText); //167160
-
-/**
- * Calculate the number of distinct ways unique cards can be positioned in the
- * open spaces of the same row or column of a grid.
- *
- * @param openSpot {string} Character representing an open spot.
- * @param numberOfCards {number} Number of unique cards to be positioned.
- * @param grid {string} Strings representing the grid. (terminating newline)
- * @return {number} Number of distinct ways cards can be positioned.
- */
-function countDistinctPositions(openSpot, numberOfCards, grid) {
+countDistinctPositions = (function () {
     'use strict';
 
-    grid = grid && grid.split('\n');
+    /**
+     * Calculate the number of distinct ways unique cards can be positioned in the
+     * open spaces of the same row or column of a grid.
+     *
+     * @param openSpot {string} Character representing an open spot.
+     * @param numberOfCards {number} Number of unique cards to be positioned.
+     * @param grid {string} Strings representing the grid. (terminating newline)
+     * @return {number} Number of distinct ways cards can be positioned.
+     */
+    return function (openSpot, numberOfCards, grid) {
+        grid = grid && grid.split('\n');
 
-    return reduce(reduce(grid, occurrence(openSpot), []),
-            sumIf(permutations(numberOfCards), greaterThanEqualTo(numberOfCards)),
-            0);
+        return reduce(reduce(grid, occurrence(openSpot), []),
+                sumIf(permutations(numberOfCards), greaterThanEqualTo(numberOfCards)),
+                0);
+    };
 
     function reduce(array, fn, init) {
         return Array.prototype.reduce.call(array, fn, init);
@@ -85,4 +86,6 @@ function countDistinctPositions(openSpot, numberOfCards, grid) {
             return number >= value;
         };
     }
-}
+}());
+
+countDistinctPositions('*', 5, myRequest.responseText); //167160
