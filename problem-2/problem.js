@@ -15,7 +15,9 @@ maxNumberOfCards = (function () {
      * @return {number} The number of cards that can be included in the final set.
      */
     return function (budget, generation, overhead) {
-        return countWhile(nextCard(generation, overhead), lessThan(budget));
+        var costOfNextCard = nextCard(generation, overhead);
+
+        return countWhile(costOfNextCard, lessThan(budget));
     };
 
     function countWhile(fn, condition) {
